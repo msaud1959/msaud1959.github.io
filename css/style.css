@@ -124,6 +124,7 @@ ul { list-style: none; }
 .nav-cta a {
   border: 1.5px solid var(--accent); color: var(--accent) !important;
   border-radius: 999px; padding: 7px 16px !important; font-weight: 600;
+  white-space: nowrap;
 }
 .nav-cta a:hover { background: var(--accent); color: #faf7f2 !important; }
 
