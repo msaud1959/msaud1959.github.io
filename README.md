@@ -18,10 +18,10 @@ portfolio/
 └── tools/make_resume.py    ← regenerates the resume PDF (optional)
 ```
 
-## ✅ Before you publish — 3 quick personalisations
+## ✅ Before you publish
 
-1. **Add your photo** — save your profile photo as `assets/profile.jpg`
-   (portrait orientation works best). The placeholder disappears automatically.
+1. **Photo** — done: your LinkedIn profile photo is already in place as
+   `assets/profile.jpg`. Replace that file anytime to update it.
 
 2. **Add gallery images** — drop real screenshots/photos into `assets/gallery/`
    using these exact filenames (placeholders are replaced automatically):
@@ -35,14 +35,12 @@ portfolio/
    | `cerdi-work.jpg` | GIS / archive work at CeRDI |
    | `certificates.jpg` | Certificates / milestones |
 
-3. **Verify dates & details** — I drafted plausible dates that you should confirm:
-   - Degree start year (currently "2023 — Present") — in `index.html` and the resume
-   - CeRDI start year (currently "2024 — Present")
-   - FORGE year (currently "2025")
-
-   Search `index.html` for these and adjust. To update the PDF resume too, either
-   edit `tools/make_resume.py` and re-run `python tools/make_resume.py`, or simply
-   replace `assets/Mohammad-Saud-Resume.pdf` with your own exported PDF.
+3. **Dates & details** — taken from your LinkedIn profile (June 2026):
+   BRAC University Oct 2021 – Jun 2023 · FedUni Jun 2023 – Jun 2026 ·
+   CeRDI co-op placement Oct 2025 – Present · KidneyMate founded Jan 2026.
+   If anything changes, edit `index.html` and `tools/make_resume.py`, then re-run
+   `python tools/make_resume.py` (or just replace `assets/Mohammad-Saud-Resume.pdf`
+   with your own exported PDF).
 
 ### Optional: make the contact form deliver to your inbox
 
