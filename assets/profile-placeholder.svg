@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#f2ede4"/>
+  <circle cx="200" cy="190" r="78" fill="#e3dccf"/>
+  <circle cx="200" cy="165" r="38" fill="#c2491d" opacity="0.85"/>
+  <path d="M120 320 Q200 240 280 320 L280 400 Q200 430 120 400 Z" fill="#c2491d" opacity="0.85"/>
+  <path d="M120 320 Q200 240 280 320 L280 400 Q200 430 120 400 Z" fill="#181a1f" opacity="0.08"/>
+  <rect x="40" y="40" width="320" height="420" fill="none" stroke="#c2491d" stroke-width="1.5" stroke-dasharray="6 6" rx="14" opacity="0.5"/>
+  <text x="200" y="455" font-family="Consolas, monospace" font-size="13" fill="#4f5763" text-anchor="middle">add assets/profile.jpg</text>
+  <text x="200" y="300" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#faf7f2" text-anchor="middle">MS</text>
+</svg>
