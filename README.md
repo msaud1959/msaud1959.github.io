@@ -45,41 +45,16 @@ Everything is plain HTML — open `index.html` in any editor:
 - **New skills** → add `<li>Skill name</li>` inside the relevant `pill-list`
 - **Colours / fonts** → edit the variables at the top of `css/style.css`
 
-## 🚀 Deploy free on GitHub Pages (step by step)
+## 🚀 Deployment — LIVE
 
-The git repository is already initialised with your first commit. Now:
-
-**Step 1 — Create the GitHub repository**
-1. Go to [github.com/new](https://github.com/new) (logged in as `msaud1959`)
-2. Repository name: `msaud1959.github.io` ← this exact name gives you the cleanest URL
-   (or any name like `portfolio` — URL becomes `msaud1959.github.io/portfolio`)
-3. Keep it **Public**, do **not** tick "Add a README"
-4. Click **Create repository**
-
-**Step 2 — Push this folder**
-Open a terminal in this `portfolio` folder and run:
-
-```
-git remote add origin https://github.com/msaud1959/msaud1959.github.io.git
-git branch -M main
-git push -u origin main
-```
-
-(Git will ask you to log in to GitHub in a browser window the first time.)
-
-**Step 3 — Turn on GitHub Pages**
-1. On the repo page: **Settings → Pages** (left sidebar)
-2. Under "Build and deployment" → Source: **Deploy from a branch**
-3. Branch: **main**, folder: **/ (root)** → **Save**
-
-**Step 4 — Open your live site**
-After ~1–2 minutes your site is live at:
+The site is deployed on GitHub Pages:
 
 > **https://msaud1959.github.io/**
 
-(or `https://msaud1959.github.io/portfolio/` if you used a custom repo name)
+Repository: [github.com/msaud1959/msaud1959.github.io](https://github.com/msaud1959/msaud1959.github.io)
+(public repo, Pages serves the `main` branch root automatically)
 
-**Updating the live site later** — edit files, then:
+**Updating the live site** — edit files in this folder, then:
 
 ```
 git add -A
@@ -87,12 +62,7 @@ git commit -m "Update content"
 git push
 ```
 
-The site refreshes automatically within a minute or two.
-
-### Alternative free hosts (same folder works as-is)
-
-- **Netlify** — [app.netlify.com/drop](https://app.netlify.com/drop): drag the folder onto the page, done
-- **Vercel** — `vercel.com/new`, import the GitHub repo, framework preset "Other"
+The live site refreshes automatically within a minute or two.
 
 ---
 
