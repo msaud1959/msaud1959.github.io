@@ -28,14 +28,11 @@ portfolio/
   BRAC University Oct 2021 – Jun 2023 · FedUni Jun 2023 – Jun 2026 ·
   CeRDI co-op placement Oct 2025 – Present · KidneyMate founded Jan 2026.
 
-### Optional: make the contact form deliver to your inbox
+### Contact form
 
-The form currently falls back to opening the visitor's email app (always works,
-nothing to configure). For true in-page sending:
-
-1. Create a free account at [formspree.io](https://formspree.io) (50 messages/month free)
-2. Create a form, copy your endpoint (looks like `https://formspree.io/f/abcd1234`)
-3. In `index.html`, replace `YOUR_FORM_ID` in the form's `action` attribute
+The form delivers to your inbox via Formspree (endpoint `https://formspree.io/f/mzdqjnrr`,
+free tier: 50 messages/month). Manage submissions at [formspree.io](https://formspree.io).
+If the endpoint ever changes, update the form's `action` attribute in `index.html`.
 
 ## How to update content later
 
