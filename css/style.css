@@ -667,103 +667,43 @@ html[data-theme="light"] .form-row textarea { background: rgba(255, 255, 255, 0.
 }
 
 /* ============================================================
-   3D SCENE — floating shapes, parallax-driven by scroll (JS)
+   WEBGL 3D SCENE — fixed canvas behind everything (js/scene3d.js)
    ============================================================ */
-.scene {
-  position: absolute; inset: 0; z-index: -1;
-  pointer-events: none; overflow: hidden;
+#bg3d {
+  position: fixed; inset: 0; z-index: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  opacity: 0.9;
 }
-.shape {
-  position: absolute; perspective: 900px;
-  will-change: transform; opacity: 0.85;
-}
-.sh-1 { top: 14vh;  right: 3%; }
-.sh-2 { top: 100vh; left: -80px; }
-.sh-3 { top: 70vh;  right: 8%; }
-.sh-4 { top: 190vh; right: 5%; }
-.sh-5 { top: 265vh; left: 3%; }
-.sh-6 { top: 335vh; right: -90px; }
-.sh-7 { top: 430vh; left: 5%; }
-.sh-8 { top: 505vh; right: 7%; }
-.sh-9 { top: 575vh; left: 8%; }
+html[data-theme="light"] #bg3d { opacity: 0.35; }
 
-/* wireframe cube */
-.cube {
-  --s: 44px;
-  width: calc(var(--s) * 2); height: calc(var(--s) * 2);
-  position: relative; transform-style: preserve-3d;
-  animation: spin3d 26s linear infinite;
+/* ============================================================
+   STAT GRID — fast facts under the About story
+   ============================================================ */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 14px; margin-top: 34px;
 }
-.cube-sm { --s: 26px; animation-duration: 18s; animation-direction: reverse; }
-.cube i {
-  position: absolute; inset: 0; display: block;
-  border: 1px solid rgba(34, 211, 238, 0.5);
-  background: rgba(34, 211, 238, 0.035);
-  box-shadow: inset 0 0 22px rgba(34, 211, 238, 0.10);
+.stat {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 16px; text-align: center;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-.cube i:nth-child(1) { transform: rotateY(0deg)   translateZ(var(--s)); }
-.cube i:nth-child(2) { transform: rotateY(90deg)  translateZ(var(--s)); }
-.cube i:nth-child(3) { transform: rotateY(180deg) translateZ(var(--s)); }
-.cube i:nth-child(4) { transform: rotateY(270deg) translateZ(var(--s)); }
-.cube i:nth-child(5) { transform: rotateX(90deg)  translateZ(var(--s)); }
-.cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(var(--s)); }
-@keyframes spin3d {
-  from { transform: rotateX(22deg) rotateY(0deg); }
-  to   { transform: rotateX(22deg) rotateY(360deg); }
+.stat:hover { border-color: var(--line-bright); transform: translateY(-3px); box-shadow: var(--glow-cyan); }
+.stat-num {
+  display: block;
+  font-family: var(--font-display); font-weight: 700; font-size: 30px;
+  background: var(--grad);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1.2;
 }
-
-/* orbital rings */
-.ring {
-  border-radius: 50%;
-  border: 1.5px solid rgba(139, 92, 246, 0.5);
-  box-shadow: 0 0 28px rgba(139, 92, 246, 0.22), inset 0 0 28px rgba(139, 92, 246, 0.10);
-  animation: ringspin 20s linear infinite;
-}
-.r-lg { width: 230px; height: 230px; }
-.r-sm {
-  width: 130px; height: 130px;
-  border-color: rgba(34, 211, 238, 0.5);
-  box-shadow: 0 0 24px rgba(34, 211, 238, 0.22), inset 0 0 24px rgba(34, 211, 238, 0.10);
-  animation-duration: 14s; animation-direction: reverse;
-}
-@keyframes ringspin {
-  from { transform: rotateX(62deg) rotateZ(0deg); }
-  to   { transform: rotateX(62deg) rotateZ(360deg); }
-}
-
-/* glowing orbs */
-.orb { border-radius: 50%; filter: blur(36px); animation: floaty 11s ease-in-out infinite alternate; }
-.o-cyan   { width: 210px; height: 210px; background: radial-gradient(circle, rgba(34, 211, 238, 0.30), transparent 70%); }
-.o-violet { width: 270px; height: 270px; background: radial-gradient(circle, rgba(139, 92, 246, 0.28), transparent 70%); animation-delay: -4s; }
-.o-pink   { width: 190px; height: 190px; background: radial-gradient(circle, rgba(244, 114, 182, 0.24), transparent 70%); animation-delay: -8s; }
-@keyframes floaty {
-  from { transform: translateY(-22px) scale(0.96); }
-  to   { transform: translateY(22px) scale(1.04); }
-}
-
-/* neon diamonds */
-.diamond {
-  width: 72px; height: 72px;
-  border: 1.5px solid rgba(244, 114, 182, 0.55);
-  box-shadow: 0 0 22px rgba(244, 114, 182, 0.20), inset 0 0 18px rgba(244, 114, 182, 0.08);
-  animation: diaspin 16s linear infinite;
-}
-.dia-sm {
-  width: 44px; height: 44px;
-  border-color: rgba(34, 211, 238, 0.55);
-  box-shadow: 0 0 18px rgba(34, 211, 238, 0.2);
-  animation-duration: 12s; animation-direction: reverse;
-}
-@keyframes diaspin {
-  from { transform: rotate(45deg); }
-  to   { transform: rotate(405deg); }
-}
-
-html[data-theme="light"] .shape { opacity: 0.5; }
-
-@media (prefers-reduced-motion: reduce) {
-  .cube, .ring, .orb, .diamond { animation: none; }
-  .scene { display: none; }
+.stat-label {
+  display: block; margin-top: 4px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--soft); letter-spacing: 0.04em;
 }
 
 /* ============================================================
@@ -779,9 +719,7 @@ html[data-theme="light"] .shape { opacity: 0.5; }
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .cursor-glow { display: none; }
-
-  /* keep only the soft orbs on small screens — wireframes crowd the text */
-  .sh-1, .sh-2, .sh-4, .sh-5, .sh-7, .sh-9 { display: none; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 880px) {

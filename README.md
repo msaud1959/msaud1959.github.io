@@ -10,6 +10,8 @@ portfolio/
 ├── index.html              ← all content lives here (edit this to update text)
 ├── css/style.css           ← design system (colours, glass cards, glow, responsive)
 ├── js/main.js              ← animations, typed roles, cursor glow, theme, contact form
+├── js/scene3d.js           ← WebGL 3D background (Three.js via CDN): neural core,
+│                             particles & rings reacting to scroll + mouse
 └── assets/
     ├── profile.jpg         ← your photo (from LinkedIn — replace anytime)
     ├── profile-placeholder.svg

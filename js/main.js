@@ -33,26 +33,8 @@
     }, { passive: true });
   }
 
-  /* ---------- 3D scene: parallax shapes on scroll ---------- */
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const shapes = Array.prototype.slice.call(document.querySelectorAll(".shape[data-speed]"));
-  if (shapes.length && !reducedMotion) {
-    let parallaxPending = false;
-    function parallax() {
-      const y = window.scrollY;
-      shapes.forEach(function (s) {
-        const speed = parseFloat(s.dataset.speed);
-        s.style.transform = "translate3d(0," + (-y * speed).toFixed(1) + "px,0) rotate(" + (y * speed * 0.05).toFixed(2) + "deg)";
-      });
-      parallaxPending = false;
-    }
-    window.addEventListener("scroll", function () {
-      if (!parallaxPending) { parallaxPending = true; requestAnimationFrame(parallax); }
-    }, { passive: true });
-    parallax();
-  }
-
   /* ---------- 3D tilt on cards (fine pointers only) ---------- */
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     document.querySelectorAll(".photo-frame, .skill-card, .hl-card, .side-card").forEach(function (card) {
       card.addEventListener("mousemove", function (e) {
