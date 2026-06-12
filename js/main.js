@@ -6,17 +6,96 @@
   /* ---------- footer year ---------- */
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* ---------- theme toggle (persisted) ---------- */
+  /* ---------- theme toggle (dark by default, persisted) ---------- */
   const themeToggle = document.getElementById("themeToggle");
   const stored = localStorage.getItem("ms-theme");
-  if (stored === "dark" || (!stored && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-    document.documentElement.setAttribute("data-theme", "dark");
-  }
+  document.documentElement.setAttribute("data-theme", stored === "light" ? "light" : "dark");
   themeToggle.addEventListener("click", function () {
     const isDark = document.documentElement.getAttribute("data-theme") === "dark";
     document.documentElement.setAttribute("data-theme", isDark ? "light" : "dark");
     localStorage.setItem("ms-theme", isDark ? "light" : "dark");
   });
+
+  /* ---------- cursor glow ---------- */
+  const glow = document.getElementById("cursorGlow");
+  if (glow && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let gx = 0, gy = 0, pending = false;
+    window.addEventListener("mousemove", function (e) {
+      gx = e.clientX; gy = e.clientY;
+      if (!pending) {
+        pending = true;
+        requestAnimationFrame(function () {
+          glow.style.left = gx + "px";
+          glow.style.top = gy + "px";
+          pending = false;
+        });
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- 3D scene: parallax shapes on scroll ---------- */
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const shapes = Array.prototype.slice.call(document.querySelectorAll(".shape[data-speed]"));
+  if (shapes.length && !reducedMotion) {
+    let parallaxPending = false;
+    function parallax() {
+      const y = window.scrollY;
+      shapes.forEach(function (s) {
+        const speed = parseFloat(s.dataset.speed);
+        s.style.transform = "translate3d(0," + (-y * speed).toFixed(1) + "px,0) rotate(" + (y * speed * 0.05).toFixed(2) + "deg)";
+      });
+      parallaxPending = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!parallaxPending) { parallaxPending = true; requestAnimationFrame(parallax); }
+    }, { passive: true });
+    parallax();
+  }
+
+  /* ---------- 3D tilt on cards (fine pointers only) ---------- */
+  if (!reducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".photo-frame, .skill-card, .hl-card, .side-card").forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - 0.5) * -7;
+        const ry = ((e.clientX - r.left) / r.width - 0.5) * 7;
+        card.style.transform = "perspective(850px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) translateY(-3px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      });
+    });
+  }
+
+  /* ---------- typed role rotation ---------- */
+  const typedEl = document.getElementById("typedRole");
+  if (typedEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const roles = [
+      "Digital Content and Communications Officer @ CeRDI",
+      "Founder & Project Manager @ KidneyMate",
+      "Digital Health Innovator",
+      "Aspiring Project Manager & Business Analyst",
+      "2× NASA Space Apps Challenge awardee"
+    ];
+    let roleIdx = 0, charIdx = roles[0].length, deleting = true;
+    setTimeout(function tick() {
+      const current = roles[roleIdx];
+      if (deleting) {
+        charIdx--;
+        if (charIdx <= 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; }
+      } else {
+        charIdx++;
+        if (charIdx >= roles[roleIdx].length) {
+          deleting = true;
+          typedEl.textContent = roles[roleIdx];
+          setTimeout(tick, 2600);
+          return;
+        }
+      }
+      typedEl.textContent = (deleting ? current : roles[roleIdx]).slice(0, charIdx);
+      setTimeout(tick, deleting ? 26 : 48);
+    }, 2600);
+  }
 
   /* ---------- header shadow + scroll progress ---------- */
   const header = document.getElementById("siteHeader");

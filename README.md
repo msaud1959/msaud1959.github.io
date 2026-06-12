@@ -8,39 +8,23 @@ no build step, no dependencies, nothing to install. Open `index.html` in a brows
 ```
 portfolio/
 ├── index.html              ← all content lives here (edit this to update text)
-├── css/style.css           ← design system (colours, layout, dark mode, responsive)
-├── js/main.js              ← scroll animations, nav, theme toggle, contact form
-├── assets/
-│   ├── profile.jpg         ← ADD THIS: your photo (portrait, ~800×1000px)
-│   ├── profile-placeholder.svg
-│   ├── Mohammad-Saud-Resume.pdf
-│   └── gallery/            ← ADD THESE: your real work images (see below)
-└── tools/make_resume.py    ← regenerates the resume PDF (optional)
+├── css/style.css           ← design system (colours, glass cards, glow, responsive)
+├── js/main.js              ← animations, typed roles, cursor glow, theme, contact form
+└── assets/
+    ├── profile.jpg         ← your photo (from LinkedIn — replace anytime)
+    ├── profile-placeholder.svg
+    └── Mohammad-Saud-Resume.pdf   ← your uploaded resume (replace to update)
 ```
 
-## ✅ Before you publish
+## ✅ Quick facts
 
-1. **Photo** — done: your LinkedIn profile photo is already in place as
-   `assets/profile.jpg`. Replace that file anytime to update it.
-
-2. **Add gallery images** — drop real screenshots/photos into `assets/gallery/`
-   using these exact filenames (placeholders are replaced automatically):
-
-   | Filename | What to put there |
-   |---|---|
-   | `kidneymate-ui.png` | KidneyMate app screenshots |
-   | `vas-map.png` | VAS portal / soil map screenshot |
-   | `retailsense-dashboard.png` | RetailSenseAI dashboard |
-   | `forge-pitch.jpg` | Photo of you pitching at FORGE |
-   | `cerdi-work.jpg` | GIS / archive work at CeRDI |
-   | `certificates.jpg` | Certificates / milestones |
-
-3. **Dates & details** — taken from your LinkedIn profile (June 2026):
-   BRAC University Oct 2021 – Jun 2023 · FedUni Jun 2023 – Jun 2026 ·
-   CeRDI co-op placement Oct 2025 – Present · KidneyMate founded Jan 2026.
-   If anything changes, edit `index.html` and `tools/make_resume.py`, then re-run
-   `python tools/make_resume.py` (or just replace `assets/Mohammad-Saud-Resume.pdf`
-   with your own exported PDF).
+- **Photo** — your LinkedIn profile photo, already in place as `assets/profile.jpg`.
+- **Resume** — the download button serves `assets/Mohammad-Saud-Resume.pdf`
+  (your own uploaded resume). To update it later, just overwrite that file
+  with a new PDF of the same name.
+- **Dates & details** — taken from your LinkedIn profile (June 2026):
+  BRAC University Oct 2021 – Jun 2023 · FedUni Jun 2023 – Jun 2026 ·
+  CeRDI co-op placement Oct 2025 – Present · KidneyMate founded Jan 2026.
 
 ### Optional: make the contact form deliver to your inbox
 
